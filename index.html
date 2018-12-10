@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Welcome to the Flash Lab</title>
+    <meta name="description" content="Flash Lab - Made using AFrame.io">
+    <script>
+    if (location.protocol != 'https:') {
+      location.href = 'https:' + window.location.href.substring(window.location.protocol.length);
+    }
+    </script>
+    <script src="https://aframe.io/releases/0.8.2/aframe.min.js"></script>
+    <script src="a-webcam.js" defer></script>
+    <script src="FlashLab.js" defer></script>
+    <script>
+      function EnterVR()
+      {
+        const scene = document.getElementById("Scene");
+        if (scene)
+          scene.enterVR();
+      }
+    </script>
+    <style>
+      #EnterFullscreenOverlay {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #000000;
+        z-index: 19999;
+        
+        color: #BE0000;
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        font-size: 5vw;
+      }
+
+      #EnterFullscreenButtonOutline {
+        width: 50vw;
+        height: 20vw;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #BE0000;
+        border-radius: 1vw;
+        
+        
+        transition: all 0.2s ease-in-out;
+      }
+      
+      #EnterFullscreenButtonOutline:hover {
+        width: 51vw;
+	      height: 21vw;
+      }
+      
+      #EnterFullscreenButton {
+        width: 49vw;
+	      height: 19vw;
+        background-color: #000000;
+        border-radius: 1vw;
+        
+        text-align: center;
+        line-height: 19vw;
+          
+        cursor: pointer;
+        user-select: none;
+      }
+      
+      #EnterFullscreenCloseButton {
+        position: absolute;
+        top: calc(50% - 9vw);
+        right: calc(50% - 24vw);
+        height: 3vw;
+        width: 3vw;
+        line-height: 3vw;
+        
+        cursor: pointer;
+      }
+      
+      #EnterFullscreenCloseButton:hover {
+        color: #BE0000D9;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="EnterFullscreenOverlay">
+      <div id="EnterFullscreenButtonOutline">
+        <div id="EnterFullscreenButton" onclick="EnterVR();">
+          Enter Virtual Reality
+        </div>
+      </div>
+      <div id="EnterFullscreenCloseButton" onclick="document.getElementById('EnterFullscreenOverlay').style.display = 'none'">×</div>
+    </div>
+    <a-scene id="Scene" background="color: #000000">
+      <a-assets>
+<!--         <video id="element" width="1024" height="1024" autoplay="true" webkit-playsinline crossorigin="anonymous"> </video> -->
+<!--         <img id="MusicNote" src="https://cdn.glitch.com/43d2c077-9155-4570-9f3d-fec3bb4342ae%2FMusic%20Note.svg?1542077909797"> -->
+        
+        <img id="slide1" src="https://cdn.glitch.com/43d2c077-9155-4570-9f3d-fec3bb4342ae%2Fimage1.png">
+        <img id="slide2" src="https://cdn.glitch.com/43d2c077-9155-4570-9f3d-fec3bb4342ae%2Fimage2.png">
+        <img id="slide3" src="https://cdn.glitch.com/43d2c077-9155-4570-9f3d-fec3bb4342ae%2Fimage3.png">
+        <img id="slide4" src="https://cdn.glitch.com/43d2c077-9155-4570-9f3d-fec3bb4342ae%2Fimage4.png">
+        <img id="slide5" src="https://cdn.glitch.com/43d2c077-9155-4570-9f3d-fec3bb4342ae%2Fimage5.png">
+        <img id="slide6" src="https://cdn.glitch.com/43d2c077-9155-4570-9f3d-fec3bb4342ae%2Fimage6.png">
+        <img id="slide7" src="https://cdn.glitch.com/43d2c077-9155-4570-9f3d-fec3bb4342ae%2Fimage7.png">
+        <img id="slide8" src="https://cdn.glitch.com/43d2c077-9155-4570-9f3d-fec3bb4342ae%2Fimage8.png">
+        <img id="slide9" src="https://cdn.glitch.com/43d2c077-9155-4570-9f3d-fec3bb4342ae%2Fimage9.png">
+        <img id="slide10" src="https://cdn.glitch.com/43d2c077-9155-4570-9f3d-fec3bb4342ae%2Fimage10.png">
+        <img id="slide11" src="https://cdn.glitch.com/43d2c077-9155-4570-9f3d-fec3bb4342ae%2Fimage11.png">
+        <img id="slide12" src="https://cdn.glitch.com/43d2c077-9155-4570-9f3d-fec3bb4342ae%2Fimage12.png">        
+        <img id="slide13" src="https://cdn.glitch.com/43d2c077-9155-4570-9f3d-fec3bb4342ae%2Fimage13.png">
+        <img id="slide14" src="https://cdn.glitch.com/43d2c077-9155-4570-9f3d-fec3bb4342ae%2Fimage14.png">
+      </a-assets>  
+      
+      <a-camera position="0 1.6 -6">
+        <a-cursor id="Cursor" material="color: white" fuse="true" raycaster="showLine: true; far: 1000; objects: .clickable;" line="color: orange; opacity: 0.5;"
+                  geometry="primitive: ring; radiusInner: 0.008; radiusOuter: 0.014" >
+          <a-animation begin="click" easing="ease-in" attribute="scale" dur="150"
+            fill="forwards" from="0.1 0.1 0.1" to="1 1 1"></a-animation>
+        </a-cursor>
+        
+<!--         <a-video id="Webcam" 
+                 material="src:#element; shader: standard;" visible="false"
+                 a-webcam
+                 position="0 0 -40" 
+                 rotation="0 0 0"
+                 width="40" height="30"></a-video> -->
+        
+        <a-image id="SlideImage" src="#slide1" position="0 0 -2" height="1" width="1.777777778" 
+                 visible="false" material="depthTest: false"></a-image>
+      </a-camera>       
+      
+      <a-light type="ambient" color="#FFFFFF" intensity="0.5">
+        <a-animation begin="raiseRedLights" attribute="color" to="#BE0000" dur="2000"></a-animation>
+        <a-animation begin="lowerRedLights" attribute="intensity" to="0" dur="20000"></a-animation>
+      </a-light>
+      <a-light type="point" intensity="0" distance="50" decay="2" color="#BE0000" position="2.5 3 -12">
+        <a-animation begin="raiseRedLights" attribute="intensity" to=".4" dur="2000"></a-animation>
+        <a-animation begin="lowerRedLights" attribute="intensity" to="0" dur="20000"></a-animation>
+      </a-light>
+      <a-light type="point" intensity="0" distance="50" decay="2" color="#BE0000" position="-2.5 3 -12">
+        <a-animation begin="raiseRedLights" attribute="intensity" to=".4" dur="2000"></a-animation>
+        <a-animation begin="lowerRedLights" attribute="intensity" to="0" dur="20000"></a-animation>
+      </a-light>
+      <a-light type="point" intensity="0" distance="50" decay="2" color="#BE0000" position="2.5 3 -2">
+        <a-animation begin="raiseRedLights" attribute="intensity" to=".5" dur="2000"></a-animation>
+        <a-animation begin="lowerRedLights" attribute="intensity" to="0" dur="20000"></a-animation>
+      </a-light>
+      <a-light type="point" intensity="0" distance="50" decay="2" color="#BE0000" position="-2.5 3 -2">
+        <a-animation begin="raiseRedLights" attribute="intensity" to=".5" dur="2000"></a-animation>
+        <a-animation begin="lowerRedLights" attribute="intensity" to="0" dur="20000"></a-animation>
+      </a-light>
+
+      <a-plane position="0 2.25 -14" width="12" height="4.5" rotation="0 0 0" color="#111111" ></a-plane>
+      <a-plane position="0 2.25 4" width="12" height="4.5" rotation="0 180 0" color="#111111" ></a-plane>
+      <a-plane position="0 0 -7" width="12" height="22" rotation="-90 0 0" color="#111111" ></a-plane>
+      <a-plane position="0 4.5 -7" width="12" height="22" rotation="90 0 0" color="#111111" ></a-plane>
+      <a-plane position="-6 2.25 -7" width="22" height="4.5" rotation="0 90 0" color="#111111" ></a-plane>
+      <a-plane position="6 2.25 -7" width="22" height="4.5" rotation="0 -90 0" color="#111111" ></a-plane>
+
+      <a-plane id="MainScreen" position="0 2.1 -13.9" width="3.8" height="2" scale="2 2 2" color="#222222" >
+        <a-entity id="SplashScreen" position="0 0 0">
+          <a-text position="0 0 0.4" 
+                  value="Hello" align="center" 
+                  font="roboto"
+                  color="#E5E5E5" opacity="0">
+            <a-animation attribute="opacity" from="0" to="1" dur="2000"></a-animation>
+            <a-animation attribute="position" from="0 0 0.4" to="0 0.3 0.35" dur="2000"></a-animation>
+            <a-animation attribute="opacity" from="1" to="0" dur="500" delay="3000"></a-animation>
+          </a-text>
+          <a-text position="0 0.3 0.4" width="6"
+                  value="Welcome to the Flash Lab" align="center" 
+                  font="roboto"
+                  color="#E5E5E5" opacity="0">
+            <a-animation attribute="opacity" from="0" to="1" dur="1500" delay="3500"></a-animation>
+          </a-text>
+          <a-text position="-0.25 -0.4 0.4" width="3"
+                  value="focus" align="right" 
+                  font="roboto"
+                  color="#DCDCDC" opacity="0">
+            <a-animation attribute="opacity" from="0" to="1" dur="1500" delay="5000"></a-animation>
+          </a-text>
+          <a-text position="0.14 -0.4 0.4" width="3"
+                  value="to start" align="left" 
+                  font="roboto"
+                  color="#DCDCDC" opacity="0">
+            <a-animation attribute="opacity" from="0" to="1" dur="1500" delay="5000"></a-animation>
+          </a-text>
+          <a-text id="StartButtonText" position="-0.05 -0.4 0.4" width="3"
+                  value="here" align="center" 
+                  font="roboto"
+                  color="#980000" opacity="0">
+            <a-animation attribute="opacity" from="0" to="1" dur="1500" delay="5000"></a-animation>
+          </a-text>
+          <a-plane id="StartButton" class="clickable" position="-0.05 -0.4 0.3" width="0.32" height="0.18"
+                   color="#323232" opacity="0" visible="false">
+            <a-animation attribute="opacity" from="0" to="0.5" dur="1500" delay="5000"></a-animation>
+            <a-animation attribute="visible" to="true" dur="0" delay="5000"></a-animation>
+          </a-plane>
+        </a-entity>
+        
+<!--         ////////////////////////////////////////////////////// -->
+        
+        <a-entity id="DirectionsScreen" position="0 0 -0.1" visible="false">
+          <a-text position="0 0 0.4" 
+                  value="Here's How It Works" align="center" 
+                  font="roboto"
+                  color="#dcc4c4" opacity="0">
+            <a-animation begin="fadeInDirections" attribute="opacity" from="0" to="1" dur="2000"></a-animation>
+            <a-animation begin="fadeInDirections" attribute="position" from="0 0 0.4" to="0 0.5 0.35" dur="2000"></a-animation>
+          </a-text>
+          <a-text position="-1.5 0.1 0.4" width="3" wrap-pixels="1300"
+                  value="1. Dance around until the red light totally fades away (5 minutes)" align="left" 
+                  font="roboto"
+                  color="#dcc4c4" opacity="0">
+            <a-animation begin="fadeInDirections" attribute="opacity" from="0" to="1" dur="1500" delay="2500"></a-animation>
+          </a-text>
+          <a-text position="-1.5 -0.1 0.4" width="3" wrap-pixels="1300"
+                  value="2. An image will appear on screen briefly (.1 second)" align="left" 
+                  font="roboto"
+                  color="#dcc4c4" opacity="0">
+            <a-animation begin="fadeInDirections" attribute="opacity" from="0" to="1" dur="1500" delay="3500"></a-animation>
+          </a-text>
+          <a-text position="-1.5 -0.3 0.4" width="3" wrap-pixels="1300"
+                  value="3. Draw what you see, without looking (10 seconds)" align="left" 
+                  font="roboto"
+                  color="#dcc4c4" opacity="0">
+            <a-animation begin="fadeInDirections" attribute="opacity" from="0" to="1" dur="1500" delay="4500"></a-animation>
+          </a-text>
+          
+          <a-text id="ContinueButtonText" position="0.0 -0.65 0.4" width="3"
+                  value="continue" align="center" 
+                  font="roboto"
+                  color="#980000" opacity="0">
+            <a-animation begin="fadeInDirections" attribute="opacity" from="0" to="1" dur="1500" delay="5000"></a-animation>
+          </a-text>
+          <a-plane id="ContinueButton" class="clickable" position="0.0 -0.67 0.3" width="0.7" height="0.2"
+                   color="#323232" opacity="0" visible="false">
+            <a-animation begin="fadeInDirections" attribute="opacity" from="0" to="0.5" dur="1500" delay="5000"></a-animation>
+            <a-animation begin="fadeInDirections" attribute="visible" to="true" dur="0" delay="5000"></a-animation>
+          </a-plane>
+        </a-entity>
+      </a-plane>
+      
+      <!--         ////////////////////////////////////////////////////// -->
+  
+<!--       <a-plane id="MusicMenuButton" position="-2.3 2.8 -3.45" width="0.6" height="0.6" 
+               rotation="0 10 0"
+               color="#111111" opacity="1">
+        <a-image id="MusicMenuButtonImage" src="#MusicNote" position="0 0 0.01" height="0.6" width="0.6"></a-image>
+      </a-plane>
+      <a-entity id="MusicControls"></a-entity> -->
+    </a-scene>
+  </body>
+</html>9
