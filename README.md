@@ -4,6 +4,8 @@ A virtual reality recreation of Professor [Hoyt L. Sherman](https://en.wikipedia
 
 This project aims to improve the accessibility of this learning method by elimitating the need for a dark room, overhead projector, and instructor. 
 
+**View this project live at [flash-lab.glitch.me](https://flash-lab.glitch.me/)!**
+
 Built with [A-Frame](https://aframe.io), a web framework for building virtual reality experiences. Make WebVR with HTML and Entity-Component. Works on Vive, Rift, desktop, mobile platforms.
 
 Written by [Lucas Volle](https://Volle.io), for artist [Conrad Volle](http://conradvolle.com/).
